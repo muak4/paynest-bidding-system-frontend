@@ -1,0 +1,46 @@
+worker_processes 1;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  sendfile on;
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+
+  # Security headers
+  server_tokens off;
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-Content-Type-Options nosniff;
+  add_header X-XSS-Protection "1; mode=block";
+  add_header Referrer-Policy "same-origin";
+  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains;" always;
+
+  server {
+    listen 80;
+
+    # Root directory for the app
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Serve React (Vite) app
+    location / {
+      try_files $uri $uri/ /index.html;
+      add_header Cache-Control "no-cache, no-store, must-revalidate";
+      add_header Pragma "no-cache";
+      add_header Expires 0;
+    }
+
+    # Optional: Substitution for dynamic content (only if needed)
+    sub_filter_once off;
+    sub_filter_types application/javascript;
+
+    # Additional file types (optional)
+    location ~* \.(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|otf|svg)$ {
+      expires 6M;
+      access_log off;
+      add_header Cache-Control "public";
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar {
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-content a,
+.navbar-content button {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  background: transparent;
+}
+
+.navbar-content button:hover,
+.navbar-content a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
