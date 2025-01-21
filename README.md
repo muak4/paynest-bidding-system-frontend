@@ -7,6 +7,7 @@ A responsive and efficient frontend for a bidding system, built with **React** a
 ## 🚀 Features
 
 - Real-time bid updates with WebSocket integration.
+- Integrated with NestJs backend with Restful APIs.
 - Fast and optimized build using **Vite**.
 - Responsive design for an enhanced user experience across devices.
 
@@ -32,6 +33,11 @@ Ensure you have the following installed:
 
 - **Node.js**: Version 16.x or later
 - **npm**: Version 7.x or later (comes with Node.js)
+- **.env**: Create .env file with backend baseurl
+
+```bash
+  VITE_API_URL=http://localhost:3001
+```
 
 ---
 
@@ -59,8 +65,7 @@ Ensure you have the following installed:
 1. **uild the DOcker image**:
 
    ```bash
-   docker build -t bidding-system-frontend .
-
+   docker build -t bidding-system-frontend.
    ```
 
 2. **Run the Docker containe**:
