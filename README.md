@@ -65,7 +65,7 @@ Ensure you have the following installed:
 1. **uild the DOcker image**:
 
    ```bash
-   docker build -t bidding-system-frontend.
+   docker build -t bidding-system-frontend .
    ```
 
 2. **Run the Docker containe**:
