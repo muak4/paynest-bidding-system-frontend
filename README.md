@@ -25,6 +25,22 @@ A responsive and efficient frontend for a bidding system, built with **React** a
 
 ---
 
+## 📘 Development Approach
+
+### Key Decisions
+
+1. **Real-Time Updates**: Integrated WebSocket for real-time bid updates to ensure users always see the latest data without manual refresh.
+2. **State Management**: Chose Redux Toolkit for centralized state management to ensure predictability and simplify debugging.
+3. **Scalability**: Designed the component structure with reusability and scalability in mind, ensuring it can adapt to new features easily.
+
+### Ensuring Robustness and Scalability
+
+- **Error Handling**: Implemented error boundaries and graceful fallbacks for unexpected issues.
+- **Performance Optimization**: Utilized Vite for faster build times and optimized bundling.
+- **WebSocket Resilience**: Implemented reconnection logic to handle intermittent network issues.
+
+---
+
 ## 🖥️ Running the Project
 
 ### Prerequisites
@@ -73,6 +89,22 @@ Ensure you have the following installed:
    docker run -p 3000:80 bidding-system-frontend
    ```
 3. Access the app: Open your browser and go to http://localhost:3000
+
+---
+
+## 🔄 CI/CD Pipeline
+
+### Setup and Deployment Process
+
+1. **Pipeline Configuration**:
+
+   - The pipeline is configured using GitHub Actions (or your chosen CI/CD tool).
+   - It automates deployment steps.
+
+2. **Steps to Run the Pipeline**:
+   - Push changes to the repository. The pipeline triggers automatically.
+   - Monitor progress via the CI/CD dashboard (e.g., GitHub Actions).
+   - Review any errors and re-run if necessary.
 
 ---
 
