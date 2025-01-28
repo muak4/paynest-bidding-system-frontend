@@ -25,7 +25,7 @@ const ItemDetailsPage: React.FC = () => {
   const [timerComplete, setTimerComplete] = useState(false);
 
   const isAuctionOpen = () => {
-    if (!item || timerComplete) return false;
+    if (!item || timerComplete || user.id === item.createdBy) return false;
     return item.duration;
   };
 
@@ -139,7 +139,8 @@ const ItemDetailsPage: React.FC = () => {
             </>
           ) : (
             <p className="text-red-color mt-4">
-              The auction has closed. You cannot place a bid.
+              'You cannot place a bid. (Either auction has closed/You cannot bid
+              on your Item)'
             </p>
           )
         ) : (

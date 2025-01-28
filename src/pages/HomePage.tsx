@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ItemCard from '../components/ItemCard';
 import { useGetItemsQuery } from '../store/slices/api/apiSlice';
 
 const HomePage: React.FC = () => {
-  const { data: items, isLoading, error } = useGetItemsQuery();
+  const { data: items, isLoading, error, refetch } = useGetItemsQuery();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   if (isLoading)
     return <p className="text-center text-xl text-gray-500">Loading...</p>;

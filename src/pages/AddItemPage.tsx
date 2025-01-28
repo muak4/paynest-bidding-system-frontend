@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAddItemMutation } from '../store/slices/api/apiSlice';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../store/slices/authSlice';
 
 const AddItemPage: React.FC = () => {
   const navigate = useNavigate();
+  const user = useSelector(selectCurrentUser);
 
   const [addItem, { isLoading }] = useAddItemMutation();
   const [apiError, setApiError] = React.useState<string | null>(null);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Item name is required'),
@@ -38,6 +47,7 @@ const AddItemPage: React.FC = () => {
           description,
           startingPrice: Number(startingPrice),
           duration: Number(duration) * 3600,
+          createdBy: user.id,
         };
         await addItem(payload).unwrap();
         formik.resetForm();
