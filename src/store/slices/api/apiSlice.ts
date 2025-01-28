@@ -26,6 +26,13 @@ export const apiSlice = createApi({
         body: credentials,
       }),
     }),
+    addItem: builder.mutation({
+      query: (itemData) => ({
+        url: '/items',
+        method: 'POST',
+        body: itemData,
+      }),
+    }),
     placeBid: builder.mutation({
       query: (bidData) => ({
         url: `/bids/${bidData.itemId}`,
@@ -43,5 +50,6 @@ export const {
   useGetItemsQuery,
   useGetItemDetailsQuery,
   useLoginMutation,
+  useAddItemMutation,
   usePlaceBidMutation,
 } = apiSlice;

@@ -1,10 +1,10 @@
-// src/router/index.tsx
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import ItemDetailsPage from '../pages/ItemDetailsPage';
 import LoginPage from '../pages/LoginPage';
 import RedirectIfAuthenticated from './RedirectIfAuthentiated';
+import AddItemPage from '../pages/AddItemPage';
 
 const RouterComponent: React.FC = () => {
   const routes = useRoutes([
@@ -20,6 +20,10 @@ const RouterComponent: React.FC = () => {
     {
       path: '/',
       element: <HomePage />,
+    },
+    {
+      path: '/add-item',
+      element: <AddItemPage />,
     },
     {
       path: '/items/:itemId',

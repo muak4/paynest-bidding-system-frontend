@@ -21,8 +21,11 @@ const Navbar: React.FC = () => {
           <Link to="/">AuctionHouse</Link>
         </div>
         <div className="flex space-x-6 items-center text-white">
-          <Link to="/" className="hover:text-secondary-color transition-colors">
-            Home
+          <Link
+            to="/add-item"
+            className="hover:text-secondary-color transition-colors"
+          >
+            Add Item
           </Link>
           {user ? (
             <>
